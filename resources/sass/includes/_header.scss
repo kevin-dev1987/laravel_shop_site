@@ -1,0 +1,139 @@
+header{
+
+    .user-interaction{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid #000;
+        padding: 0 0.5em;
+        background-color: $blackolive;
+        margin-bottom: 1em;
+
+        .auth{
+            display: flex;
+            gap: 0.3em;
+            align-items: center;
+            color: #fff;
+            
+
+            a{
+                display: flex;
+                gap: 0.2em;
+                align-items: center;
+                color: #fff;
+                transition: color 150ms;
+
+                &:hover{
+                    color: $ecru;
+                }
+            }
+        }
+
+        .shopping-tools{
+            display:flex;
+            flex-direction: row;
+            gap: 1.5em;
+
+            .item{
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                gap: 0;
+                color: #fff;
+                cursor: pointer;
+
+                i{
+                    font-size: 1.4rem;
+                }
+                
+                
+            }
+        }
+    }
+
+    .header-mid{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2em;
+
+        .logo{
+            
+            h1{
+                font-size: 2.7rem;
+                color: $magentahaze;
+                
+                span{
+                    color: $silverlakeblue
+                }
+            }
+        }
+
+        .search{
+
+            form{
+                display: flex;
+                flex-direction: row;
+                gap: 0.3em;
+                align-items: center;
+                width: 100%;
+                
+                .input-block{
+                    border: 2px solid #000;
+                    display: flex;
+                    gap: 0;
+                    
+                    
+                    input{
+                        height: 45px;
+                        border-radius: 0;
+                        border: 0;
+                        width: 400px;
+                        font-size: 1.3rem;
+                        padding: 0 0.5em;
+                    }
+
+                    select{
+                        height: 45px;
+                        width: 150px;
+                        text-align: center;
+                        border-radius: 0;
+                        border: 0;
+                        background-color: #fff;
+                        border-left: 1px solid #000;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    nav{
+        margin-bottom: 0.25em;
+
+        ul{
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+            padding: 0.5em 0;
+            border: 2px solid $blackolive;
+            border-left: 0;
+            border-right: 0;
+
+            a{
+                color: #000;
+                font-size: 1.1rem;
+                transition: all 150ms ease-in-out;
+                text-decoration: none;
+
+                &:hover{
+                    color: $ecru;
+
+                }
+            }
+        }
+    }
+}
