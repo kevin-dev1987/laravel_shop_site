@@ -48,9 +48,9 @@
     </div>
     <nav>
         <ul>
-            <a href="#">Home</a>
+            <a href="{{route('index')}}">Home</a>
             <a href="#">My Favourites</a>
-            <a href="#">All Categories</a>
+            <a href="{{route('categories')}}">All Categories</a>
             <a href="#">Electronics</a>
             <a href="#">Gardening</a>
             <a href="#">Computing</a>

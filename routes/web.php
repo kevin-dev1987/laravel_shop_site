@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index'])->middleware('web')->name('index');
 
 Route::get('/get_offers', [IndexController::class, 'getOffers']);
+
+//List all categories
+Route::get('/categories', [ProductController::class, 'categories'])->name('categories');
+
+//Products (should always have a 'category' condition)
+Route::get('/products', [ProductController::class, 'productsList'])->name('products');

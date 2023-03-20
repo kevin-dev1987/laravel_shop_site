@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('stock_id');
             $table->integer('category_id');
+            $table->string('brand');
             $table->string('image');
             $table->boolean('out_of_stock');
             $table->float('price');

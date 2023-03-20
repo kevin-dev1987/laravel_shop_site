@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->sentence(5),
             'stock_id' => $this->faker->numberBetween(3000, 20000),
             'category_id' => $this->faker->numberBetween(1, 5),
+            'brand' => $this->faker->randomElement(['Brand 1', 'Brand 2', 'Brand 3', 'Brand 4']),
             'image' => 'https://picsum.photos/250',
             'out_of_stock' => $this->faker->boolean(65),
             'price' => $this->faker->randomDigit(),

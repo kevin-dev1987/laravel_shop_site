@@ -1,0 +1,23 @@
+.products-list-wrapper{
+
+    .wrapper-flex{
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+
+        .product-filter{
+            border-right: 1px solid #000;
+            width: 20%;
+
+            h3{
+                text-align: center;
+                width: 100%;
+                padding: 0.5em 0;
+                background-color: $silverlakeblue;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+            }
+        }
+    }
+}
