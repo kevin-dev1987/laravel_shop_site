@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IndexController::class, 'index'])->middleware('web')->name('index');
+
+Route::get('/get_offers', [IndexController::class, 'getOffers']);

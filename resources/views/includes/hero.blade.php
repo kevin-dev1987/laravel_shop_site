@@ -1,11 +1,5 @@
 <div class="site-hero">
-    <div class="hero-display-1">
-        <h1>Hero 1</h1>
-    </div>
-    <div class="hero-display-2">
-        <h1>Hero 2</h1>
-    </div>
-    <div class="hero-display-3">
-        <h1>Hero 3</h1>
-    </div>
+    <img class="hero-display-1" src="{{asset ('storage/images/hero1.jpg')}}" alt="">
+    <img class="hero-display-2" src="{{asset ('storage/images/hero2.jpg')}}" alt="">
+    <img class="hero-display-3" src="{{asset ('storage/images/hero3.jpg')}}" alt="">
 </div>
