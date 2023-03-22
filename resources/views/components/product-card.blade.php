@@ -1,6 +1,12 @@
 <div class="product-card">
-    <img src="{{$product->image}}" alt="">
-    <a href="#">{{$product->name}}</a>
+    <div class="image">
+        <a href="{{route('view_product', [$product->category->slug, $product->stock_id])}}">
+            <img src="{{$product->image}}" alt="">
+        </a>
+    </div>
+    <div class="name">
+        <a href="{{route('view_product', [$product->category->slug, $product->stock_id])}}">{{$product->name}}</a>
+    </div>
     <div class="footer">
         <div class="price">
             £{{number_format($product->price, 2)}}
@@ -14,6 +20,5 @@
                 NOT IN STOCK
             </div>
         @endif
-        {{$product->brand}}
     </div>
 </div>

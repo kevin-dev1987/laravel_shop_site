@@ -1,8 +1,14 @@
 @import 'config/config';
+@import 'config/buttons';
 
 @import 'includes/header';
 @import 'includes/hero';
 
+//Components
+@import 'components/product_card';
+
 @import 'main/index';
 
+//Products
 @import 'products/products';
+@import 'products/product';

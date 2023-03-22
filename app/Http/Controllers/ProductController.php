@@ -13,20 +13,33 @@ class ProductController extends Controller
         return view('products.categories', ['categories' => $categories]);
     }
 
-    public function productsList(Request $request){
-        if (!isset($_GET['category'])){
-            return redirect('/');
-        } else{
-            $category = $request->category;
+    public function productsList(Category $category){
+        $category = $category;
+        // dd($category);
 
-            $products = Product::whereHas('category' ,function($query) use ($category){
-                $query->where('category', $category);
-            })->filter(request(['brand']))->with(['category'])->get();
+        $products = Product::filter(request(['brand', 'min_price', 'max_price']))->whereHas('category', function($query) use ($category) {
+            $query->where('categories.slug', $category->slug);
+        })->with(['category'])->get();
 
-            return view('products.products', ['products' => $products]);
+        $brands = $products->unique('brand')->pluck('brand');
 
-        }
+        return view('products.products', [
+            'products' => $products,
+            'brands' => $brands,
+            'category' => $category
+        ]);
         
-    
+    }
+
+    public function viewProduct(Category $category, Product $product){  
+        $category = $category;
+        $product = $product->load(['category', 'reviews' => function($query){
+            $query->with(['user', 'helpfulness']);
+        }])->loadCount(['reviews'])->loadAvg('reviews', 'rating');
+        
+        return view('products.product', [
+            'product' => $product,
+            'category' => $category
+        ]);
     }
 }

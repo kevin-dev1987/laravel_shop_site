@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,16 @@ Route::get('/', [IndexController::class, 'index'])->middleware('web')->name('ind
 Route::get('/get_offers', [IndexController::class, 'getOffers']);
 
 //List all categories
-Route::get('/categories', [ProductController::class, 'categories'])->name('categories');
+Route::get('/categories', [ProductController::class, 'categories'])->middleware('web')->name
+('categories');
+
 
 //Products (should always have a 'category' condition)
-Route::get('/products', [ProductController::class, 'productsList'])->name('products');
+Route::get('/products/{category:slug}', [ProductController::class, 'productsList'])->middleware('web')->name('products');
+
+//View Product
+Route::get('/products/{category:slug}/{product:stock_id}', [ProductController::class, 'viewProduct'])->middleware('web')->name('view_product');
+
+
+//Product review helpfulness interaction
+Route::post('/review_helpful', [ReviewController::class, 'submitReviewHelpfulness']);

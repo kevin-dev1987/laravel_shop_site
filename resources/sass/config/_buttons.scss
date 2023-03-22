@@ -1,0 +1,62 @@
+.btn-lg{
+    padding: 0.25em 1.5em;
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    width: fit-content;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.btn-danger{
+    background-color: red;
+}
+
+.btn-filter{
+    width: 40%;
+    background-color: $silverlakeblue;
+    border: 0;
+    padding: 0.2em 0;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    font-weight: bold;
+}
+
+
+.btn-search{
+    padding: 0.5em 1em;
+    background-color: $silverlakeblue;
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    display: block;
+    border: 0;
+    border-radius: 2px;
+    font-weight: bold;
+    height: 50px;
+    width: 100px;
+}
+
+.btn-promo-shop{
+    background-color: $ecru;
+    padding: 0.5em 1em;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #3f3f37;
+    text-decoration: none;
+}
+
+.basket-add-btn{
+    border-radius: 0;
+    background-color: $silverlakeblue;
+    color: #fff;
+    font-size: 1.1rem;
+    font-size: bold;
+    border: 0;
+    display: block;
+    padding: 0.25em 0.5em;
+}

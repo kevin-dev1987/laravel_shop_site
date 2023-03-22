@@ -51,11 +51,11 @@
             <a href="{{route('index')}}">Home</a>
             <a href="#">My Favourites</a>
             <a href="{{route('categories')}}">All Categories</a>
-            <a href="#">Electronics</a>
-            <a href="#">Gardening</a>
-            <a href="#">Computing</a>
-            <a href="#">Toys</a>
-            <a href="#">Health</a>
+            <a href="{{route('products', ['category' => 'electronics'])}}">Electronics</a>
+            <a href="{{route('products', ['category' => 'gardening'])}}">Gardening</a>
+            <a href="{{route('products', ['category' => 'computing'])}}">Computing</a>
+            <a href="{{route('products', ['category' => 'toys'])}}">Toys</a>
+            <a href="{{route('products', ['category' => 'health'])}}">Health</a>
         </ul>
     </nav>
 </header>
