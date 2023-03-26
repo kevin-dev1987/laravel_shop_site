@@ -149,6 +149,7 @@
                 border: 1px solid #f1f1f1;
                 border-left: 0;
                 border-right: 0;
+                margin-bottom: 1em;
 
                 h3{
                     margin-bottom: 1em;
@@ -165,6 +166,20 @@
                         background-color: #fff;
                         font-size: 1.3rem;
                     }
+                }
+            }
+
+            .purchase-review{
+
+                h3{
+                    margin-bottom: 1em;
+                }
+
+                .main{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5em;
+                    align-items: center;
                 }
             }
             
@@ -293,6 +308,88 @@
 
         i{
             cursor: pointer;
+        }
+    }
+
+    .window-message-success{
+        position: fixed;
+        top: 5px;
+        left: 30%;
+        display: none;
+        justify-content: space-between;
+        min-width: 400px;
+        border: 1px solid green;
+        background-color: rgba(green, 0.4);
+        margin: 0 auto;
+        padding: 0.5em;
+        border-radius: 5px;
+
+        p{
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        i{
+            cursor: pointer;
+        }
+    }
+
+    .review-report-modal{
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        background-color: rgba(#000, 0.6);
+
+        .modal-content{
+            background-color: #fff;
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            margin-top: 3em;
+            border-radius: 10px;
+
+            p{
+                padding: 0.5em;
+            }
+
+            form{
+                padding: 0.5em;
+
+                span{
+                    font-size: 1.2rem;
+                }
+
+                .reason-radio{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25em;
+                    padding-left: 1em;
+                    margin-bottom: 1em;
+
+                    label{
+                        font-size: 1.1rem;
+                    }
+                }
+
+                .buttons{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5em;
+                    padding: 0 0.5em;
+                    
+                }
+            }
+
+            .review-report-errors{
+                display: none;
+                padding-left: 0.5em;
+                font-style: italic;
+                color: red;
+            }
         }
     }
 }

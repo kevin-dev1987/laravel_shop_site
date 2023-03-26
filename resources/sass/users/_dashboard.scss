@@ -1,0 +1,222 @@
+.user-account-wrapper{
+    width: 80%;
+    margin: 1em auto;
+
+    h3{
+        margin-bottom: 1em;
+    }
+
+    .account-dropdown-menus{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        .user-menu{
+
+            .header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                background-color: $silverlakeblue;
+                border-radius: 3px;
+                padding: 0.25em;
+                cursor: pointer;
+
+                .title{
+                    color: #fff;
+                }
+
+                i{
+                    color: #fff;
+                    
+                }
+            }
+
+            .menu-main{
+                background-color: #f1f1f1;
+                padding: 0.25em;
+                border: 1px solid rgba(#666, 0.1);
+                display: none;
+            }
+        }
+
+        .home-menu{
+
+            .menu-main{
+
+                h4{
+                    background-color: #fff;
+                }
+
+                .details-box{
+
+                    .user-details-grid{
+                        display: grid;
+                        width: 100%;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 1em;
+
+                        .grid-item{
+                            padding: 0.5em;
+                            display: flex;
+                            flex-direction: row;
+                            gap: 0.25em;
+                            align-items: center;
+
+                            i{
+                                font-size: 2.5rem;
+                                white-space: nowrap;
+                                height: fit-content;
+                            }
+
+                            &:nth-of-type(1){
+                                width: 50%;
+                            }
+
+                            &:nth-of-type(3){
+                                width: 50%;
+                            }
+
+                            .address-box{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.1em;
+
+                                a{
+                                    font-size: 0.9rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .personal-details-menu{
+
+            .menu-main{
+
+                .menu-flex{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    padding: 0.5em;
+
+                    form{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5em;
+
+                        div{
+                            width: 80%;
+                            display: flex;
+                            flex-direction: column;
+                            
+                            label{
+                                font-size: 0.9rem;
+                            }
+
+                            input[type='text']{
+                                padding: 0.1em;
+                            }
+
+                            select{
+                                width: 80%;
+                            }
+
+                            input[type='date']{
+                                width: 70%;
+                            }
+                        }
+                    }
+
+                    .need-help-box{
+                        border: 1px solid #000;
+                        width: 40%;
+                        padding: 0.5em;
+                        background-color: #fff;
+
+                        h3{
+                            margin-bottom: 0.5em;
+                        }
+
+                        ul{
+                            list-style: none;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5em;
+
+                            li{
+                                i{
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .password-change-menu{
+
+            form{
+                padding: 0.5em;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5em;
+
+                label{
+                    font-size: 0.9rem;
+                }
+
+                .input-flex{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.2em;
+                    align-items: baseline;
+
+                    i{
+                        font-size: 1.1rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .recent-orders-menu{
+
+            .menu-main{
+
+                table{
+                    width: 100%;
+                    background-color: #fff;
+                    border-radius: 5px;
+
+                    thead{
+                        
+                        th{
+                            color: $magentahaze;
+                        }
+                    }
+
+                    tbody{
+
+                        text-align: center;
+                    }
+                }
+
+                .footer{
+                    padding: 0.5em;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    a{
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}

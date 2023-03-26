@@ -28,7 +28,7 @@
                             <i class="bi bi-star"></i>
                         @endfor
                     </div>
-                    ({{$product->reviews_count}})
+                    ({{$product->reviews_count . ' ' . Str::plural('Review', $product->reviews)}})
                 </div>
                 <div class="image">
                     <img src="{{$product->image}}" alt="">
@@ -68,6 +68,12 @@
                         </select>
                         <button class="basket-add-btn">ADD TO BASKET</button>
                     </form>
+                </div>
+                <div class="purchase-review">
+                    <h3>LEAVE A REVIEW</h3>
+                    <div class="main">
+                        <a class="btn-lg btn-primary" href="{{route('review_purchase', [$product->category->slug, $product->stock_id], 'review')}}">REVIEW THIS ITEM</a> {{$product->reviews_count . ' ' . Str::plural('Review', $product->reviews)}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,7 +148,7 @@
                             <div class="tool-item review-unhelpful" data-id="{{$review->id}}">
                                 Unhelpful({{$unhelpful}})
                             </div>
-                            <div class="tool-item review-report">
+                            <div class="tool-item review-report" data-user="{{$review->user->name}}" data-review_id="{{$review->id}}">
                                 Report <i class="bi bi-flag-fill"></i>
                             </div>
                         </div>
@@ -151,8 +157,50 @@
             </ul>
         </div>
         <div class="window-message-danger">
-            <p>Ths is a test message</p>
-            <i class="bi bi-x" id="close-window-message"></i>
+            <p></p>
+            <i class="bi bi-x close-window-message"></i>
+        </div>
+        <div class="window-message-success">
+            <p></p>
+            <i class="bi bi-x close-window-message"></i>
+        </div>
+        <div class="review-report-modal">
+            <div class="modal-content">
+                <p>Report this review by <strong></strong></p>
+                <form id="report-review-form">
+                    <span>Reason:</span>
+                    <div class="reason-radio">
+                        <div>
+                            <input type="radio" name="report_reason" id="reason1" value="Reason 1">
+                            <label for="reason1">Reason 1</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="report_reason" id="reason2" value="Reason 2">
+                            <label for="reason2">Reason 2</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="report_reason" id="reason3" value="Reason 3">
+                            <label for="reason3">Reason 3</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="report_reason" id="reason4" value="Reason 4">
+                            <label for="reason4">Reason 4</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="report_reason" id="reason5" value="Reason 5">
+                            <label for="reason5">Reason 5</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="review_id" value="" id="input_review_id">
+                    <div class="buttons">
+                        <button class="btn btn-primary submit-review-report">Submit</button>
+                        <button class="btn btn-danger cancel-review-report">Cancel</button>
+                    </div>
+                </form>
+                <div class="review-report-errors">
+                    
+                </div>
+            </div>
         </div>
     </div>
 @endsection

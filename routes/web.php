@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,26 @@ Route::get('/products/{category:slug}', [ProductController::class, 'productsList
 //View Product
 Route::get('/products/{category:slug}/{product:stock_id}', [ProductController::class, 'viewProduct'])->middleware('web')->name('view_product');
 
+//Leave a product review
+Route::get('/products/{category:slug}/{product:stock_id}/review', [ProductController::class, 'showPurchaseReview'])->name('review_purchase');
 
 //Product review helpfulness interaction
 Route::post('/review_helpful', [ReviewController::class, 'submitReviewHelpfulness']);
+
+//Report Review
+Route::post('/review_report', [ReviewController::class, 'reportReview']);
+
+// AUTH
+Route::get('/register', [AuthController::class, 'showRegister'])->middleware('guest')->name('show_register');
+
+Route::post('/create_user', [AuthController::class, 'createUser']);
+
+Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest')->name('show_login');
+
+Route::post('/authenticate', [AuthController::class, 'authenticate']);
+
+
+//USERS
+
+//Dashboard/Account
+Route::get('/account', [UserController::class, 'account'])->middleware('auth')->name('account');

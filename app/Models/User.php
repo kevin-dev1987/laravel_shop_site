@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address_1',
+        'address_2',
+        'address_postcode',
+        'country',
     ];
 
     /**
@@ -44,5 +48,9 @@ class User extends Authenticatable
 
     public function productReviews(){
         return $this->hasMany(Review::class, 'user_id', 'id');
+    }
+
+    public function purchases(){
+        return $this->hasMany(Sale::class, 'user_id')->with('saleProduct');
     }
 }

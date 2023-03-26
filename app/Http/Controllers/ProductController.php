@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Sale;
+use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -40,6 +42,30 @@ class ProductController extends Controller
         return view('products.product', [
             'product' => $product,
             'category' => $category
+        ]);
+    }
+
+    public function showPurchaseReview(Category $category, Product $product){
+        $response = [];
+        
+        if(!auth()->user()){
+            $response['title'] = 'Sorry, not authorised!';
+            $response['message'] = 'You must be logged in to do this!';
+            
+        }
+
+        $purchase_check = Sale::where('stock_id', $product->stock_id)->pluck('user_id')->toArray();
+        if(in_array(auth()->user()->id, $purchase_check)){
+            $response['title'] = 'Sorry, not authorised!';
+            $response['message'] = 'You need to have purchased this item in order to review it!';
+        }
+        
+
+        return view('products.purchase_review', [
+            'response' => $response,
+            'category' => $category,
+            'product' => $product,
+            
         ]);
     }
 }

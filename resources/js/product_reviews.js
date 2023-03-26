@@ -3,8 +3,9 @@ $(document).on('click', '#reviews-dropdown-toggle', function(){
 })
 
 //Close window message
-$('#close-window-message').click(function(){
+$('.close-window-message').click(function(){
     $('.window-message-danger').css('display', 'none')
+    $('.window-message-success').css('display', 'none')
 })
 
 //User clicks 'helpful' on the review
@@ -45,6 +46,11 @@ function reviewHelpful(helpful, review_id){
                 $('.window-message-danger').css('display', 'flex')
                 $('.window-message-danger > p').html('You\'ve already made a selection!')
             }
+
+            if(response.status == 'success'){
+                $('.window-message-success').css('display', 'flex')
+                $('.window-message-success > p').html('Thank you for you\'re input!')
+            }
         },
         error: function(xhr, status, error){
             console.log(error)
@@ -53,3 +59,60 @@ function reviewHelpful(helpful, review_id){
 
     console.log(reviewHelpfulData)
 }
+
+//Report review
+$(document).on('click', '.review-report', function(){
+    var user = $(this).data('user')
+    var id = $(this).data('review_id')
+
+    var modal = $('.review-report-modal')
+    modal.show()
+    var modal_title = modal.find('.modal-content > p > strong')
+    modal_title.html(user)
+    var input_review_id = $('#input_review_id')
+    input_review_id.val(id)
+})
+
+
+$(document).on('click', '.cancel-review-report', function(e){
+    e.preventDefault()
+    $('.review-report-modal').hide()
+})
+
+var review_report_form = $('#report-review-form')[0]
+$(document).on('click', '.submit-review-report', function(e){
+    e.preventDefault()
+    var reviewReportData = new FormData(review_report_form)
+    reviewReportData.append('type', 'review')
+
+    $.ajax({
+        url: '/review_report',
+        method: 'POST',
+        processData: false,
+        cache: false,
+        dataType: false,
+        contentType: false,
+        data: reviewReportData,
+        success: function(response){
+            if(response.input == 'empty'){
+                $('.review-report-errors').show()
+                $('.review-report-errors').html('Please select a reason.')
+            }
+
+            if(response.auth == 'not_auth'){
+                $('.review-report-errors').show()
+                $('.review-report-errors').html('You must be logged in to do this.')
+            }
+
+            if(response.status == 'success'){
+                $('.review-report-modal').hide()
+                $('.window-message-success').css('display', 'flex')
+                $('.window-message-success > p').html('You\'re report has been submitted!')
+            }
+        },
+        error: function(xhr, status, error){
+            console.log(error)
+        }
+    })
+
+})

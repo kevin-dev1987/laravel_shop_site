@@ -11,6 +11,20 @@
     cursor: pointer;
 }
 
+.btn{
+    padding: 0.25em 0.5em;
+    font-size: 1.1rem;
+    border: 0;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: $silverlakeblue;
+}
+
 .btn-danger{
     background-color: red;
 }

@@ -1,15 +1,22 @@
 <header>
     <div class="user-interaction">
         <div class="auth">
-            <a href="#">
-                <i class="bi bi-person-vcard-fill"></i>
-                <span>Register</span>
-            </a>
-            <div>|</div>
-            <a href="#">
-                <i class="bi bi-person-fill"></i>
-                <span>Login</span>
-            </a>
+            @auth
+                <a href="/account">
+                    <i class="bi bi-person-fill"></i>
+                    <span>My Account</span>
+                </a>
+            @else
+                <a href="{{ route('show_register') }}">
+                    <i class="bi bi-person-vcard-fill"></i>
+                    <span>Register</span>
+                </a>
+                <div>|</div>
+                <a href="{{route('show_login')}}">
+                    <i class="bi bi-person-fill"></i>
+                    <span>Login</span>
+                </a>
+            @endauth
         </div>
         <div class="shopping-tools">
             <div class="item">
@@ -48,14 +55,14 @@
     </div>
     <nav>
         <ul>
-            <a href="{{route('index')}}">Home</a>
+            <a href="{{ route('index') }}">Home</a>
             <a href="#">My Favourites</a>
-            <a href="{{route('categories')}}">All Categories</a>
-            <a href="{{route('products', ['category' => 'electronics'])}}">Electronics</a>
-            <a href="{{route('products', ['category' => 'gardening'])}}">Gardening</a>
-            <a href="{{route('products', ['category' => 'computing'])}}">Computing</a>
-            <a href="{{route('products', ['category' => 'toys'])}}">Toys</a>
-            <a href="{{route('products', ['category' => 'health'])}}">Health</a>
+            <a href="{{ route('categories') }}">All Categories</a>
+            <a href="{{ route('products', ['category' => 'electronics']) }}">Electronics</a>
+            <a href="{{ route('products', ['category' => 'gardening']) }}">Gardening</a>
+            <a href="{{ route('products', ['category' => 'computing']) }}">Computing</a>
+            <a href="{{ route('products', ['category' => 'toys']) }}">Toys</a>
+            <a href="{{ route('products', ['category' => 'health']) }}">Health</a>
         </ul>
     </nav>
 </header>

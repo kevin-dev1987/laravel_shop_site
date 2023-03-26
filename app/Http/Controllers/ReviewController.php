@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Report;
 use App\Models\Review;
 use App\Models\ReviewHelpful;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ReviewController extends Controller
     //Submit review helpfulness
     public function submitReviewHelpfulness(Request $request){
         $response = [];
-        if(auth()->user()){
+        if(!auth()->user()){
             $response = [
                 'auth' => 'not_auth',
             ];
@@ -30,7 +31,7 @@ class ReviewController extends Controller
                 ];
                 return response()->json($response);
             } else{
-                $user_id = 777;
+                $user_id = auth()->user()->id;
                 $review_helpful_check = ReviewHelpful::where('review_id', $id)->pluck('user_id')->toArray();
                 if(in_array($user_id, $review_helpful_check)){
                     $response = [
@@ -41,7 +42,7 @@ class ReviewController extends Controller
                     ReviewHelpful::create([
                         'review_id' => $id,
                         'helpful' => $request->helpful,
-                        'user_id' => 777,
+                        'user_id' => $user_id,
                     ]);
     
                     $response = [
@@ -52,5 +53,36 @@ class ReviewController extends Controller
 
             }
         }
+    }
+
+    //report review
+    public function reportReview(Request $request){
+        $response = [];
+        if(empty($request->report_reason)){
+            $response = [
+                'input' => 'empty',
+            ];
+            return response()->json($response);
+        }
+
+        if(!auth()->user()){
+            $response = [
+                'auth' => 'not_auth',
+            ];
+            return response()->json($response);
+        } else{
+            Report::create([
+                'type' => $request->type,
+                'offending_id' => $request->review_id,
+                'reporter_id' => auth()->user()->id,
+                'reason' => $request->report_reason,
+            ]);
+
+            $response = [
+                'status' => 'success',
+            ];
+            return response()->json($response);
+        }
+
     }
 }

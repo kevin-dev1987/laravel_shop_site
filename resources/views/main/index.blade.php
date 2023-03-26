@@ -12,6 +12,11 @@
             </a>
         </div>
     </div>
+    <div>
+        @auth
+            YOU ARE LOGGED IN {{auth()->user()->name}}
+        @endauth
+    </div>
 
     <section>
         <h2>On Offer</h2>
