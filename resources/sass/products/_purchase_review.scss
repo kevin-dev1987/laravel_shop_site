@@ -1,0 +1,146 @@
+.purchase-review-wrapper{
+    width: 80%;
+    margin: 2em auto;
+
+    a{
+        margin: 3em auto;
+        font-size: 1.2rem;
+        color: #000;
+        
+    }
+    
+    .review-error-title{
+        text-align: center;
+        margin: 0 0 1em 0;
+        font-size: 2rem;
+        color: $silverlakeblue;
+    }
+
+    .review-error-message{
+        text-align: center;
+        margin-bottom: 4em;
+        font-size: 1.1rem;
+        color: $magentahaze;
+    }
+
+    .review-flex{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        
+
+        .review{
+            // border: 1px solid #000;
+            width: 100%;
+            margin-right: 3em;
+
+            p{
+                font-size: 1.1rem;
+                margin-bottom: 1em;
+                
+                strong{
+                    color: $magentahaze;
+                }
+            }
+
+            form{
+                display: flex;
+                flex-direction: column;
+
+                .review-stars{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5em;
+                    align-items: baseline;
+                    // justify-content: center;
+                    margin-bottom: 1em;
+
+                    .star-array{
+
+                        i{
+                            font-size: 2rem;
+                            cursor: pointer;
+                            color: goldenrod;
+                        }
+                    }
+
+                    span{
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .review-summary-input{
+                    margin-bottom: 2em;
+                    display: flex;
+                    flex-direction: column;
+                    
+                    p{
+                        font-size: 0.9rem;
+                        padding: 0;
+                        margin-bottom: 0.25em;
+                    }
+
+                    input{
+                        width: 80%;
+                        padding: 0.25em;
+                        font-size: 1.1rem;
+                        border: 1px solid #666;
+                    }
+                }
+
+                .review-comment-input{
+                    margin-bottom: 1em;
+                    display: flex;
+                    flex-direction: column;
+
+                    p{
+                        font-size: 0.9rem;
+                        padding: 0;
+                        margin-bottom: 0.25em;
+                    }
+                    textarea{
+                        width: 80%;
+                        resize: none;
+                        border: 1px solid #666;
+                        padding: 0.25em;
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+
+        .item-details{
+
+            .details-box{
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                border: 1px solid #666;
+                gap: 1em;
+                background-color: #f1f1f1;
+                padding: 0.25em;
+                padding-right: 0;
+                
+
+               
+
+                img{
+                    width: 50%;  
+                }
+
+                .details{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25em;
+                    font-size: 0.9rem;
+
+                    span{
+                        font-weight: normal;
+                    }
+
+                }
+                
+            }
+        }
+    }
+}

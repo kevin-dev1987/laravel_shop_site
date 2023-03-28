@@ -1,4 +1,4 @@
-<div class="product-card">
+<div class="product-card" title="{{$product->name}}">
     <div class="image">
         <a href="{{route('view_product', [$product->category->slug, $product->stock_id])}}">
             <img src="{{$product->image}}" alt="">

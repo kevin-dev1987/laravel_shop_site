@@ -20,6 +20,7 @@ $(document).on('click', '.review-unhelpful', function(){
     var helpful = 0
     var review_id = $(this).data('id')
     reviewHelpful(helpful, review_id)
+
 })
 
 function reviewHelpful(helpful, review_id){
@@ -31,6 +32,7 @@ function reviewHelpful(helpful, review_id){
     $.ajax({
         url: '/review_helpful',
         method: 'POST',
+        context: review_id,
         dataType: false,
         cache: false,
         processData: false,
@@ -47,9 +49,19 @@ function reviewHelpful(helpful, review_id){
                 $('.window-message-danger > p').html('You\'ve already made a selection!')
             }
 
+            if(response.review == 'user_review'){
+                $('.window-message-danger').css('display', 'flex')
+                $('.window-message-danger > p').html('You can\'t do this with your own review!')
+            }
+
             if(response.status == 'success'){
                 $('.window-message-success').css('display', 'flex')
                 $('.window-message-success > p').html('Thank you for you\'re input!')
+                if(response.type == '0'){
+                    $('#unhelpful-amount-'+review_id).html('('+response.count+')')
+                } else if(response.type == '1'){
+                    $('#helpful-amount-'+review_id).html('('+response.count+')')
+                }
             }
         },
         error: function(xhr, status, error){
@@ -84,6 +96,7 @@ $(document).on('click', '.submit-review-report', function(e){
     e.preventDefault()
     var reviewReportData = new FormData(review_report_form)
     reviewReportData.append('type', 'review')
+    $('.review-report-errors').hide()
 
     $.ajax({
         url: '/review_report',
@@ -115,4 +128,8 @@ $(document).on('click', '.submit-review-report', function(e){
         }
     })
 
+})
+
+$(document).on('click', '#close-review-message', function(){
+    $('.review-message').hide()
 })

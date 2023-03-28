@@ -36,6 +36,8 @@ Route::get('/products/{category:slug}/{product:stock_id}', [ProductController::c
 //Leave a product review
 Route::get('/products/{category:slug}/{product:stock_id}/review', [ProductController::class, 'showPurchaseReview'])->name('review_purchase');
 
+Route::post('/products/{category:slug}/{product:stock_id}/create_review', [ReviewController::class, 'createReview'])->name('create_review');
+
 //Product review helpfulness interaction
 Route::post('/review_helpful', [ReviewController::class, 'submitReviewHelpfulness']);
 
