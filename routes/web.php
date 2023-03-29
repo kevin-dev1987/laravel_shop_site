@@ -53,8 +53,13 @@ Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest')-
 
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
 
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
 
 //USERS
 
 //Dashboard/Account
 Route::get('/account', [UserController::class, 'account'])->middleware('auth')->name('account');
+
+Route::put('/update_user', [UserController::class, 'updateUser'])->middleware('auth');
+

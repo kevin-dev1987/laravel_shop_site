@@ -6,6 +6,11 @@
         margin-bottom: 1em;
     }
 
+    .user-update-error{
+        font-size: 0.75rem;
+        color: red;
+    }
+
     .account-dropdown-menus{
         display: flex;
         flex-direction: column;
@@ -111,6 +116,7 @@
 
                         div{
                             width: 80%;
+                            max-width: 80%;
                             display: flex;
                             flex-direction: column;
                             
@@ -129,6 +135,13 @@
                             input[type='date']{
                                 width: 70%;
                             }
+
+                        }
+
+                        .buttons{
+                            display: flex;
+                            flex-direction: row;
+                            gap: 0.5em;
                         }
                     }
 

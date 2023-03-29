@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
+
     <div class="user-account-wrapper">
         <h3>Your Account</h3>
 
@@ -21,7 +22,7 @@
                                 Your Current email is: {{ $user->email }}
                             </div>
                             <div class="grid-item">
-                                <i class="bi bi-x"></i>
+                                <i class="bi bi-x" style="color: red; font-size: 5rem"></i>
                                 <p>You are currently not signed up to our newsletter. You can opt in <a
                                         href="#">here.</a></p>
                             </div>
@@ -48,21 +49,26 @@
                 </div>
                 <div class="menu-main">
                     <div class="menu-flex">
-                        <form action="/update_user" method="post">
-                            @csrf
+                        <form id="update-user-form">
                             @method('PUT')
                             <div>
                                 <label for="name">Name</label>
                                 <input type="text" name="name" id="name" value="{{ $user->name }}">
+                                <span class="user-update-error" data-error="name"></span>
                             </div>
                             <div>
                                 <label for="email">Email</label>
                                 <input type="text" name="email" id="email" value="{{ $user->email }}">
+                                <span class="user-update-error" data-error="email"></span>
                             </div>
                             <div>
                                 <label for="gender">Gender</label>
                                 <select name="gender" id="gender">
+                                    @if ($user->gender != null)
+                                    <option value="{{$user->gender}}">{{$user->gender}}</option>
+                                    @else
                                     <option>Select</option>
+                                    @endif
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
@@ -70,20 +76,29 @@
                             </div>
                             <div>
                                 <label for="dob">Date of Birth</label>
-                                <input type="date" name="date_of_birth" id="dob">
+                                <input type="date" name="date_of_birth" id="dob" value="{{$user->date_of_birth}}">
                             </div>
                             <div>
                                 <label for="address1">Address Line 1</label>
                                 <input type="text" name="address_1" id="address1" value="{{ $user->address_1 }}">
+                                <span class="user-update-error" data-error="address_1"></span>
                             </div>
                             <div>
                                 <label for="address2">Address Line 2</label>
                                 <input type="text" name="address_2" id="address2" value="{{ $user->address_2 }}">
+                                <span class="user-update-error" data-error="address_2"></span>
+                            </div>
+                            <div>
+                                <label for="city">Town/City</label>
+                                <input type="text" name="address_city" id="city" value="{{ $user->address_city }}">
+                                <span class="user-update-error" data-error="address_city"></span>
                             </div>
                             <div>
                                 <label for="address_postcode">Postcode</label>
                                 <input type="text" name="address_postcode" id="address_postcode"
                                     value="{{ $user->address_postcode }}">
+                                <span class="user-update-error" data-error="address_postcode"></span>
+        
                             </div>
                             <div>
                                 <label for="country">Country</label>
@@ -94,10 +109,12 @@
                             </div>
                             <div>
                                 <label for="phone">Phone Number</label>
-                                <input type="text" name="phone" id="phone">
+                                <input type="text" name="phone" id="phone" value="{{$user->phone}}">
+                                <span class="user-update-error" data-error="phone"></span>
                             </div>
                             <div class="buttons">
-                                <button class="btn btn-primary">Update</button>
+                                <button class="btn btn-primary update-user-btn">Update</button>
+                                <button class="btn btn-danger" type="reset">Reset</button>
                             </div>
                         </form>
                         <div class="need-help-box">
@@ -128,14 +145,14 @@
                     <i class="bi bi-caret-down-fill"></i>
                 </div>
                 <div class="menu-main">
-                    <form action="/change_password" method="post">
-                        @csrf
+                    <form id="user-password-update">
                         @method('PUT')
                         <div>
                             <label for="password">Current Password</label>
                             <div class="input-flex">
                                 <input type="password" name="password" id="password">
                                 <i class="bi bi-eye" id="password_1_reveal"></i>
+                                <span class="user-update-error" data-error="password" id="pwd_update_conf_error"></span>
                             </div>
                         </div>
                         <div>
@@ -143,6 +160,7 @@
                             <div class="input-flex">
                                 <input type="password" name="password_new" id="password2">
                                 <i class="bi bi-eye" id="password_2_reveal"></i>
+                                <span class="user-update-error" data-error="password_new"></span>
                             </div>
                         </div>
                         <div>
@@ -153,7 +171,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <button class="btn btn-primary">Update</button>
+                            <button class="btn btn-primary update-user-password">Update</button>
                         </div>
                     </form>
                 </div>

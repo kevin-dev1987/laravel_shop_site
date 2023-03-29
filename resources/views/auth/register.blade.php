@@ -22,6 +22,20 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="date_of_birth" id="dob" value="{{old('date_of_birth')}}">
+                    @error('date_of_birth')
+                        <span style="color: red;">{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="text" name="phone" id="phone" value="{{old('phone')}}">
+                    @error('phone')
+                        <span style="color: red;">{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
                     <label for="password1">Password</label>
                     <input type="password" name="password" id="password1">
                     @error('password')
@@ -49,6 +63,13 @@
                     <label for="address2">Address Line 2</label>
                     <input type="text" name="address_2" id="address2" placeholder="e.g: North District, Town/City" {{old('address_2')}}>
                     @error('address_2')
+                        <span style="color: red;">{{$message}}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="address_city">City</label>
+                    <input type="text" name="address_city" id="address_city" {{old('address_city')}}>
+                    @error('address_city')
                         <span style="color: red;">{{$message}}</span>
                     @enderror
                 </div>

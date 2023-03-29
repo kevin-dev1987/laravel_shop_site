@@ -56,20 +56,30 @@ class ProductController extends Controller
         if(!auth()->user()){
             $response['title'] = 'Sorry, not authorised!';
             $response['message'] = 'You must be logged in to do this!';
+
+            return view('products.purchase_review', [
+                'response' => $response,
+                'category' => $category,
+                'product' => $product,
+                
+            ]); 
             
         }
 
         $purchase_check = Sale::where('product_id', $product->id)->pluck('user_id')->toArray();
-        if(!in_array(auth()->user()->id, $purchase_check)){
+        if(auth()->user() && !in_array(auth()->user()->id, $purchase_check)){
             $response['title'] = 'Sorry, not authorised!';
             $response['message'] = 'You need to have purchased this item in order to review it!';
             $order_info = null;
         } else{
-            $order_info = Sale::where('product_id', $product->id)->where('user_id', auth()->user()->id)->first();
+            $order_info = Sale::where('product_id', $product->id)->where(
+                function($query){
+                    return $query
+                    ->where('user_id', auth()->user()->id);
+                }
+            )->first();
         }
 
-        // dd($order_info);
-        
 
         return view('products.purchase_review', [
             'response' => $response,
